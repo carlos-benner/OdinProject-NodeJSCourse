@@ -1,0 +1,39 @@
+body {
+    background-color: dimgrey;
+}
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+}
+nav > ul {
+    margin: 0;
+    min-width: 40%;
+    list-style: none;
+    display: grid;
+    grid-template-columns: 2fr 2fr 2fr;
+}
+nav > ul > li > a {
+    background-color: rgb(141, 255, 126);
+    display: flex;
+    height: 60px;
+    justify-content: center;
+    align-items: center;
+}
+nav > ul > li > a:hover {
+    background-color: rgb(107, 185, 97);
+}
+a {
+    text-decoration: none;
+}
+.content {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+form {
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    grid-column-gap: 10px;
+}
