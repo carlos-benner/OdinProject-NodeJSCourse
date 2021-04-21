@@ -72,21 +72,51 @@ const fs = require('fs');
 
 //events examples
 
-let rs = fs.createReadStream('./demofile1.html');
-rs.on('open', function () {
-    console.log('The file is open');
+//let rs = fs.createReadStream('./demofile1.html');
+//rs.on('open', function () {
+//    console.log('The file is open');
+//});
+//
+//let events = require('events');
+//let eventEmitter = new events.EventEmitter();
+//
+////Create an event handler:
+//var myEventHandler = function () {
+//    console.log('I hear a scream!');
+//};
+//
+////Assign the event handler to an event:
+//eventEmitter.on('scream', myEventHandler);
+//
+////Fire the 'scream' event:
+//eventEmitter.emit('scream');
+
+//You can run multiple servers applications at the same time
+
+const server = http.createServer((req, res) => {
+    // Set the response HTTP header with HTTP status and Content type
+    res.writeHead(200, { 'Content-Type': 'text/plain' });
+
+    // Send the response body "Hello World"
+    res.end('Hello World\n');
 });
 
-let events = require('events');
-let eventEmitter = new events.EventEmitter();
+const server2 = http.createServer((req, res) => {
+    // Set the response HTTP header with HTTP status and Content type
+    res.writeHead(200, { 'Content-Type': 'text/plain' });
 
-//Create an event handler:
-var myEventHandler = function () {
-    console.log('I hear a scream!');
-};
+    // Send the response body "Hello World"
+    res.end('Hello World22222\n');
+});
 
-//Assign the event handler to an event:
-eventEmitter.on('scream', myEventHandler);
+const hostname = '127.0.0.1';
+const port = 8000;
 
-//Fire the 'scream' event:
-eventEmitter.emit('scream');
+// Prints a log once the server starts listening
+server.listen(port, hostname, () => {
+    console.log(`Server running at http://${hostname}:${port}/`);
+});
+
+server2.listen(8081, hostname, () => {
+    console.log(`Server running at http://${hostname}:${8081}/`);
+});
